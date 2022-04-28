@@ -50,7 +50,7 @@ FlowView(QWidget *parent)
 
   //setViewport(new QGLWidget(QGLFormat(QGL::SampleBuffers)));
 
-  _backgroundColor = QColor::black();
+  _backgroundColor = Qt::black;
 }
 
 
