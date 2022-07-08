@@ -88,7 +88,7 @@ recalculateSize() const
   {
     unsigned int maxNumOfEntries = std::max(_nSinks, _nSources);
     unsigned int step = _entryHeight + _spacing;
-    _height = step * maxNumOfEntries;
+    _height = step * maxNumOfEntries * 2;
   }
 
   if (auto w = _dataModel->embeddedWidget())
