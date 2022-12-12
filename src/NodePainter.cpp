@@ -40,9 +40,9 @@ paint(QPainter* painter,
 
   drawNodeRect(painter, geom, model, graphicsObject);
 
-  //drawConnectionPoints(painter, geom, state, model, scene);
+  drawConnectionPoints(painter, geom, state, model, scene);
 
-  //drawFilledConnectionPoints(painter, geom, state, model);
+  drawFilledConnectionPoints(painter, geom, state, model);
 
   drawModelName(painter, geom, state, model);
 
@@ -128,7 +128,6 @@ drawConnectionPoints(QPainter* painter,
 
   float diameter = nodeStyle.ConnectionPointDiameter;
   auto  reducedDiameter = diameter * 0.6;
-
   for(PortType portType: {PortType::Out, PortType::In})
   {
     size_t n = state.getEntries(portType).size();
@@ -189,10 +188,12 @@ drawConnectionPoints(QPainter* painter,
       {
         painter->setBrush(nodeStyle.ConnectionPointColor);
       }
-
       painter->drawEllipse(p,
                            reducedDiameter * r,
                            reducedDiameter * r);
+    }
+    if(model->nodeType() == 0) {
+        break; //ignore InPort if inlet node type
     }
   };
 }
