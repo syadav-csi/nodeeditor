@@ -160,7 +160,7 @@ portScenePosition(PortIndex index,
   totalHeight += step * index;
 
   // TODO: why?
-  totalHeight += step / 2.0;
+  totalHeight += step;
 
   switch (portType)
   {
@@ -168,13 +168,13 @@ portScenePosition(PortIndex index,
     {
       double x = _width + nodeStyle.ConnectionPointDiameter;
 
-      result = QPointF(x, totalHeight);
+      result = QPointF(x*0.9, totalHeight);
       break;
     }
 
     case PortType::In:
     {
-      double x = 0.0 - nodeStyle.ConnectionPointDiameter;
+      double x = 4.0 /*- nodeStyle.ConnectionPointDiameter*/;
 
       result = QPointF(x, totalHeight);
       break;

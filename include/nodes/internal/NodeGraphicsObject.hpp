@@ -2,6 +2,7 @@
 
 #include <QtCore/QUuid>
 #include <QtWidgets/QGraphicsObject>
+#include <QObject>
 
 #include "Connection.hpp"
 
@@ -53,6 +54,9 @@ public:
 
   void
   lock(bool locked);
+
+Q_SIGNALS:
+  void nodeMoved(QtNodes::Node& node, const QPointF& newLocation);
 
 protected:
   void

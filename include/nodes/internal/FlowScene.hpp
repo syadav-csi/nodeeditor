@@ -123,7 +123,7 @@ Q_SIGNALS:
   void connectionDeleted(Connection const &c);
   void connectionDrawn(const QtNodes::Connection &c);
 
-  void nodeMoved(Node& n, const QPointF& newLocation);
+  void nodeMoved(QtNodes::Node& n, const QPointF& newLocation);
 
   void nodeDoubleClicked(QtNodes::Node& n);
 

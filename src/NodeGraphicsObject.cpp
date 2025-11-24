@@ -15,6 +15,7 @@
 #include "Node.hpp"
 #include "NodeDataModel.hpp"
 #include "NodeConnectionInteraction.hpp"
+#include <QObject>
 
 #include "StyleCollection.hpp"
 
@@ -37,6 +38,7 @@ NodeGraphicsObject(FlowScene &scene,
   setFlag(QGraphicsItem::ItemIsFocusable, true);
   setFlag(QGraphicsItem::ItemIsSelectable, true);
   setFlag(QGraphicsItem::ItemSendsScenePositionChanges, true);
+  setFlag(QGraphicsItem::ItemSendsGeometryChanges, true);
 
   setCacheMode( QGraphicsItem::DeviceCoordinateCache );
 
@@ -192,6 +194,8 @@ itemChange(GraphicsItemChange change, const QVariant &value)
     moveConnections();
   }
 
+  _scene.nodeMoved(node(),pos());
+
   return QGraphicsItem::itemChange(change, value);
 }
 
@@ -320,6 +324,8 @@ mouseMoveEvent(QGraphicsSceneMouseEvent * event)
   QRectF r = scene()->sceneRect();
 
   r = r.united(mapToScene(boundingRect()).boundingRect());
+
+  _scene.nodeMoved(_node,event->pos());
 
   scene()->setSceneRect(r);
 }

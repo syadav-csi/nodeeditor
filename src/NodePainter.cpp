@@ -96,7 +96,7 @@ drawNodeRect(QPainter* painter,
 
   float diam = nodeStyle.ConnectionPointDiameter;
 
-  QRect boundary( -diam, -diam, geom.width(), geom.height());
+  QRect boundary( diam, -diam*2.5, 150, 150);
 
   double const radius = 3.0;
 
@@ -109,7 +109,7 @@ drawNodeRect(QPainter* painter,
       painter->drawPixmap(boundary, pfrNode);
   }
   else {
-      QPixmap inletNode(":/images/browse_forward.png");
+      QPixmap inletNode(":/images/reactor_intlet-01.png");
       painter->drawPixmap(boundary, inletNode);
   }
 }
@@ -127,7 +127,7 @@ drawConnectionPoints(QPainter* painter,
   auto const     &connectionStyle = StyleCollection::connectionStyle();
 
   float diameter = nodeStyle.ConnectionPointDiameter;
-  auto  reducedDiameter = diameter * 0.6;
+  auto  reducedDiameter = diameter * 0.5;
   for(PortType portType: {PortType::Out, PortType::In})
   {
     size_t n = state.getEntries(portType).size();
@@ -272,7 +272,7 @@ drawModelName(QPainter * painter,
   auto rect = metrics.boundingRect(name);
 
   QPointF position((geom.width() - rect.width()) / 2.0,
-                   (geom.spacing() + geom.entryHeight()) / 3.0);
+                   ((geom.spacing() + geom.entryHeight()) / 3.0) - 5);
 
   painter->setFont(f);
   painter->setPen(nodeStyle.FontColor);
@@ -281,13 +281,11 @@ drawModelName(QPainter * painter,
   }
   else if(model->nodeType() == NT_WSR) {
       QPointF position2((geom.width() - rect.width()) / 2.0,
-                       ((geom.spacing() + geom.entryHeight()) / 3.0) - 30);
+                       ((geom.spacing() + geom.entryHeight()) / 3.0) - 40);
       painter->drawText(position2, name);
   }
   else {
-      QPointF position2((geom.width() - rect.width()) / 2.0,
-                       ((geom.spacing() + geom.entryHeight()) / 3.0) - 20);
-      painter->drawText(position2, name);
+      painter->drawText(position, name);
   }
 
 
@@ -336,7 +334,7 @@ drawEntryLabels(QPainter * painter,
 
       auto rect = metrics.boundingRect(s);
 
-      p.setY(p.y() + rect.height() / 4.0);
+      p.setY(p.y()*1.25 + rect.height());
 
       switch (portType)
       {
