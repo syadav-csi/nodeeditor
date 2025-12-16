@@ -72,12 +72,19 @@ boundingRect() const
 
   double addon = 4 * nodeStyle.ConnectionPointDiameter;
 
+  if(_dataModel->nodeType()==NT_EXT_INLET){
+    return (QRectF(0,0,  _width, _height));
+  }else if(_dataModel->nodeType()==NT_WSR){
+    return (QRectF(0,(0 - (addon*1.8)),  _width, _height+addon*1.8));
+  }else if(_dataModel->nodeType()==NT_PFR){
+    return (QRectF(0,0 - addon*0.5,  _width, _height+addon*0.5));
+  }
+
   return QRectF(0 - addon,
                 0 - addon,
                 _width + 2 * addon,
                 _height + 2 * addon);
 }
-
 
 void
 NodeGeometry::
@@ -149,11 +156,19 @@ portScenePosition(PortIndex index,
 {
   auto const &nodeStyle = StyleCollection::nodeStyle();
 
+  //Calculate the area for node label
+  QPainter painter;
+  QFont f = painter.font();
+  f.setBold(true);
+  QFontMetrics metrics(f);
+  auto labelRect = metrics.boundingRect(_dataModel->caption());
+
   unsigned int step = _entryHeight + _spacing;
 
   QPointF result;
 
-  double totalHeight = 0.0;
+  double totalHeight = boundingRect().height();
+  double y = boundingRect().y() + totalHeight/2 + labelRect.height();
 
   totalHeight += captionHeight();
 
@@ -168,15 +183,15 @@ portScenePosition(PortIndex index,
     {
       double x = _width + nodeStyle.ConnectionPointDiameter;
 
-      result = QPointF(x*0.9, totalHeight);
+      result = QPointF(x*0.85, y);
       break;
     }
 
     case PortType::In:
     {
-      double x = 4.0 /*- nodeStyle.ConnectionPointDiameter*/;
+      double x = nodeStyle.ConnectionPointDiameter;
 
-      result = QPointF(x, totalHeight);
+      result = QPointF(x*1.85, y);
       break;
     }
 

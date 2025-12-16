@@ -75,5 +75,7 @@ public:
                      NodeGeometry const & geom,
                      NodeDataModel const * model,
                      NodeGraphicsObject const & graphicsObject);
+
+  void resizeNodeByFactor(Node & node, double factor);
 };
 }
