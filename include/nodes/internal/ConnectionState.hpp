@@ -51,11 +51,14 @@ public:
   { return _lastHoveredNode; }
 
   void resetLastHoveredNode();
+  bool isHighlighted() const { return _highlighted; }
+  void setHighlighted(bool h) { _highlighted = h; }
 
 private:
 
   PortType _requiredPort;
 
   Node* _lastHoveredNode{nullptr};
+  bool _highlighted {false};
 };
 }

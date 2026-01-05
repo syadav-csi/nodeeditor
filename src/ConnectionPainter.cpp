@@ -178,6 +178,8 @@ drawNormalLine(QPainter * painter,
   ConnectionState const& state =
     connection.connectionState();
 
+  bool const highlighted = state.isHighlighted();
+
   if (state.requiresPort())
     return;
 
@@ -210,12 +212,20 @@ drawNormalLine(QPainter * painter,
 
   ConnectionGeometry const& geom = connection.connectionGeometry();
 
-  double const lineWidth = connectionStyle.lineWidth();
-
-  // draw normal line
+  double lineWidth = connectionStyle.lineWidth();
   QPen p;
 
-  p.setWidth(lineWidth);
+  if (highlighted)
+  {
+      lineWidth *= 2.5;
+      p.setColor(selectedColor); // highlight color
+  }
+  else
+  {
+      p.setColor(normalColorOut);
+  }
+
+  p.setWidthF(lineWidth);
 
   auto const& graphicsObject = connection.getConnectionGraphicsObject();
   bool const selected = graphicsObject.isSelected();
@@ -266,7 +276,7 @@ drawNormalLine(QPainter * painter,
   {
     p.setColor(normalColorOut);
 
-    if (selected)
+    if (selected || highlighted)
     {
       p.setColor(selectedColor);
     }
