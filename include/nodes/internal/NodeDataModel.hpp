@@ -51,7 +51,7 @@ public:
 
   //Can add parameter std::string requestedInfo which we can set to be "inlet_temperature", "reactor_type", "volume", etc..
   //this way if we need to show more info about the node we can just call this overridden method with what we need
-  virtual QString extraInfo(int reactorType) { return ""; }
+  virtual QString extraInfo(int reactorType) {(void)reactorType; return ""; }
 
   /// It is possible to hide caption in GUI
   virtual bool
