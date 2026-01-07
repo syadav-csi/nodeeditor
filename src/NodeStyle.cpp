@@ -1,6 +1,6 @@
 #include "NodeStyle.hpp"
 
-#include <iostream>
+// #include <iostream>
 
 #include <QtCore/QFile>
 #include <QtCore/QJsonDocument>

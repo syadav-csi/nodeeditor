@@ -310,13 +310,13 @@ paint(QPainter* painter,
   // draw end points
   ConnectionGeometry const& geom = connection.connectionGeometry();
 
-  QPointF const & source = geom.source();
+  //QPointF const & source = geom.source();
   QPointF const & sink   = geom.sink();
 
-  auto const & connectionStyle =
-    QtNodes::StyleCollection::connectionStyle();
+  // auto const & connectionStyle =
+  //   QtNodes::StyleCollection::connectionStyle();
 
-  double const pointDiameter = connectionStyle.pointDiameter();
+  //double const pointDiameter = connectionStyle.pointDiameter();
   painter->setBrush(Qt::black);
   //painter->setPen(connectionStyle.constructionColor());
   //painter->setBrush(connectionStyle.constructionColor());

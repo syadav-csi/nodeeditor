@@ -4,7 +4,7 @@
 #include <QtWidgets/QGraphicsScene>
 
 #include <unordered_map>
-#include <tuple>
+// #include <tuple>
 #include <functional>
 
 #include "QUuidStdHash.hpp"

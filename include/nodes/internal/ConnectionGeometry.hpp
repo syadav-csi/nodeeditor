@@ -5,7 +5,7 @@
 #include <QtCore/QPointF>
 #include <QtCore/QRectF>
 
-#include <iostream>
+//#include <iostream>
 
 namespace QtNodes
 {

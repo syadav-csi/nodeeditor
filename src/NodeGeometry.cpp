@@ -9,7 +9,6 @@
 
 #include <QtGlobal>
 
-#include <iostream>
 #include <cmath>
 
 using QtNodes::NodeGeometry;
@@ -170,12 +169,12 @@ portScenePosition(PortIndex index,
   double totalHeight = boundingRect().height();
   double y = boundingRect().y() + totalHeight/2 + labelRect.height();
 
-  totalHeight += captionHeight();
+  // totalHeight += captionHeight();
 
-  totalHeight += step * index;
+  // totalHeight += step * index;
 
-  // TODO: why?
-  totalHeight += step;
+  // // TODO: why?
+  // totalHeight += step;
 
   switch (portType)
   {

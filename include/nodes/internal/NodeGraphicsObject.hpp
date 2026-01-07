@@ -7,7 +7,7 @@
 #include "Connection.hpp"
 
 #include "NodeGeometry.hpp"
-#include "NodeState.hpp"
+// #include "NodeState.hpp"
 
 class QGraphicsProxyWidget;
 

@@ -13,7 +13,6 @@
 #include <QtWidgets>
 
 #include <QDebug>
-#include <iostream>
 #include <cmath>
 
 #include "FlowScene.hpp"
@@ -36,7 +35,7 @@ FlowView(QWidget *parent)
   setDragMode(QGraphicsView::ScrollHandDrag);
   setRenderHint(QPainter::Antialiasing);
 
-  auto const &flowViewStyle = StyleCollection::flowViewStyle();
+  //auto const &flowViewStyle = StyleCollection::flowViewStyle();
 
   setBackgroundBrush(Qt::white);
 

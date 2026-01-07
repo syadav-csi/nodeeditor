@@ -1,6 +1,6 @@
 #include "NodeGraphicsObject.hpp"
 
-#include <iostream>
+// #include <iostream>
 #include <cstdlib>
 
 #include <QtWidgets/QtWidgets>
@@ -17,7 +17,7 @@
 #include "NodeConnectionInteraction.hpp"
 #include <QObject>
 
-#include "StyleCollection.hpp"
+// #include "StyleCollection.hpp"
 
 using QtNodes::NodeGraphicsObject;
 using QtNodes::Node;

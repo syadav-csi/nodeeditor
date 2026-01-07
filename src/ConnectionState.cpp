@@ -1,7 +1,5 @@
 #include "ConnectionState.hpp"
 
-#include <iostream>
-
 #include <QtCore/QPointF>
 
 #include "FlowScene.hpp"
